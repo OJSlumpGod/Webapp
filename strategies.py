@@ -1,10 +1,6 @@
 import numpy as np
 import talib
 
-
-
-
-
 class TrendFollowingStrategy:
     def __init__(self, fast_period=20, slow_period=50):
         self.fast_period = fast_period
