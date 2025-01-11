@@ -1,10 +1,9 @@
-import requests
 import numpy as np
 import talib
-import logging
-from datetime import datetime, timedelta
-import nltk
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+
+
+
 
 class TrendFollowingStrategy:
     def __init__(self, fast_period=20, slow_period=50):
