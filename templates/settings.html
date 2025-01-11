@@ -1,0 +1,152 @@
+<!-- templates/settings.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            Trading Settings
+        </div>
+        <div class="card-body">
+            <form id="settingsForm">
+                <div class="row mb-3">
+                    <!-- Risk Level -->
+                    <div class="col-md-4">
+                        <label for="riskLevel" class="form-label">Risk Level</label>
+                        <select class="form-select" id="riskLevel" required>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Max Trades -->
+                    <div class="col-md-4">
+                        <label for="maxTrades" class="form-label">Max Trades</label>
+                        <input type="number" class="form-control" id="maxTrades" min="1" required>
+                    </div>
+                    
+                    <!-- Trade Interval -->
+                    <div class="col-md-4">
+                        <label for="tradeInterval" class="form-label">Trade Interval</label>
+                        <select class="form-select" id="tradeInterval" required>
+                            <option value="1h">1 Hour</option>
+                            <option value="30m">30 Minutes</option>
+                            <option value="15m">15 Minutes</option>
+                            <option value="5m">5 Minutes</option>
+                            <option value="1m">1 Minute</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <!-- Stop Loss Percentage -->
+                    <div class="col-md-4">
+                        <label for="stopLossPercentage" class="form-label">Stop Loss (%)</label>
+                        <input type="number" class="form-control" id="stopLossPercentage" min="0" step="0.1" required>
+                    </div>
+                    
+                    <!-- Take Profit Percentage -->
+                    <div class="col-md-4">
+                        <label for="takeProfitPercentage" class="form-label">Take Profit (%)</label>
+                        <input type="number" class="form-control" id="takeProfitPercentage" min="0" step="0.1" required>
+                    </div>
+                    
+                    <!-- RSI Period -->
+                    <div class="col-md-4">
+                        <label for="rsiPeriod" class="form-label">RSI Period</label>
+                        <input type="number" class="form-control" id="rsiPeriod" min="1" required>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <!-- EMA Fast Period -->
+                    <div class="col-md-4">
+                        <label for="emaFastPeriod" class="form-label">EMA Fast Period</label>
+                        <input type="number" class="form-control" id="emaFastPeriod" min="1" required>
+                    </div>
+                    
+                    <!-- EMA Slow Period -->
+                    <div class="col-md-4">
+                        <label for="emaSlowPeriod" class="form-label">EMA Slow Period</label>
+                        <input type="number" class="form-control" id="emaSlowPeriod" min="1" required>
+                    </div>
+                    
+                    <!-- Bollinger Bands Period -->
+                    <div class="col-md-4">
+                        <label for="bbandsPeriod" class="form-label">Bollinger Bands Period</label>
+                        <input type="number" class="form-control" id="bbandsPeriod" min="1" required>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <!-- Trailing ATR Multiplier -->
+                    <div class="col-md-6">
+                        <label for="trailingATRMultiplier" class="form-label">Trailing ATR Multiplier</label>
+                        <input type="number" class="form-control" id="trailingATRMultiplier" min="0" step="0.1" required>
+                    </div>
+                    
+                    <!-- Adjust ATR Multiplier -->
+                    <div class="col-md-6">
+                        <label for="adjustATRMultiplier" class="form-label">Adjust ATR Multiplier</label>
+                        <input type="number" class="form-control" id="adjustATRMultiplier" min="0" step="0.1" required>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <!-- Trade Cooldown -->
+                    <div class="col-md-6">
+                        <label for="tradeCooldown" class="form-label">Trade Cooldown (seconds)</label>
+                        <input type="number" class="form-control" id="tradeCooldown" min="0" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="form-label">Enable Strategies</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="TrendFollowingStrategy" id="strategyTrendFollowing" name="strategy">
+                        <label class="form-check-label" for="strategyTrendFollowing">Trend Following</label>
+                    </div>
+                    <!-- Add similar checkboxes for other strategies... -->
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="ScalpingStrategy" id="strategyScalping" name="strategy">
+                        <label class="form-check-label" for="strategyScalping">Scalping</label>
+                    </div>
+                </div>
+                
+                <!-- Scalping-specific settings -->
+                <div class="row mb-3">
+                    <h5>Scalping Strategy Settings</h5>
+                    <div class="col-md-4">
+                        <label for="scalpingEmaPeriod" class="form-label">Scalping EMA Period</label>
+                        <input type="number" class="form-control" id="scalpingEmaPeriod" min="1" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="scalpingRsiPeriod" class="form-label">Scalping RSI Period</label>
+                        <input type="number" class="form-control" id="scalpingRsiPeriod" min="1" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="scalpingAtrPeriod" class="form-label">Scalping ATR Period</label>
+                        <input type="number" class="form-control" id="scalpingAtrPeriod" min="1" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="scalpingBbPeriod" class="form-label">Scalping BB Period</label>
+                        <input type="number" class="form-control" id="scalpingBbPeriod" min="1" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="scalpingThresholdMultiplier" class="form-label">Scalping Threshold Multiplier</label>
+                        <input type="number" class="form-control" id="scalpingThresholdMultiplier" min="0" step="0.1" required>
+                    </div>
+                </div>   
+                
+                <!-- Save Button -->
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" id="saveSettingsButton">Save Settings</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

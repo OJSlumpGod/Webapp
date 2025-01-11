@@ -1,0 +1,23 @@
+{
+    "riskLevel": "high",
+    "maxTrades": 5,
+    "tradeIntervalHours": 0.25,
+    "stopLossPercentage": 2,
+    "takeProfitPercentage": 5,
+    "rsiPeriod": 14,
+    "emaFastPeriod": 12,
+    "emaSlowPeriod": 26,
+    "bbandsPeriod": 20,
+    "trailingATRMultiplier": 1.5,
+    "adjustATRMultiplier": 1.5,
+    "tradeCooldown": 60,
+    "scalpingEmaPeriod": 5,
+    "scalpingRsiPeriod": 5,
+    "scalpingAtrPeriod": 14,
+    "scalpingBbPeriod": 20,
+    "scalpingThresholdMultiplier": 0.5,
+    "enabledStrategies": [
+        "TrendFollowingStrategy",
+        "ScalpingStrategy"
+    ]
+}
